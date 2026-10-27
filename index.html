@@ -341,6 +341,9 @@ section + section{border-top:1px solid var(--line)}
 .vcard:hover{transform:translateY(-2px)}
 .vcard .ph{aspect-ratio:16/9;position:relative;background:#ddd;max-width:100%}
 .vcard .ph svg{display:block;width:100%;height:100%}
+.vcard .ph img.vp{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.vcard .ph .fl{z-index:1}
+.cmp img.cth{display:block;width:120px;aspect-ratio:16/10;object-fit:cover;border-radius:6px;margin-bottom:8px}
 .vcard .fl{position:absolute;top:10px;left:10px;display:flex;align-items:center;gap:6px;background:rgba(31,58,76,.88);color:#fff;font-size:12px;letter-spacing:.04em;text-transform:uppercase;padding:5px 9px 5px 7px;border-radius:999px}
 .vcard .fl i{width:10px;height:10px;border-radius:50%}
 .vcard .bd{padding:14px 12px 12px;display:flex;flex-direction:column;gap:10px;flex:1}
@@ -784,7 +787,7 @@ footer img{height:24px;width:auto}
       <div class="stepper" id="stepper"></div>
       <div class="screen" id="screen"></div>
       <div id="cartbar"></div>
-      <p class="fict">Lieux, prix et numéros fictifs, à titre d'illustration. Les seuils sont ceux que vous avez réglés plus haut.</p>
+      <p class="fict">Lieux, prix et numéros fictifs, à titre d'illustration. Photos d'illustration : Unsplash. Les seuils sont ceux que vous avez réglés plus haut.</p>
     </div>
 
     <div class="simhead row" id="ia"><span>Temps 2</span>Interroger la dépense avec l'assistant IA<button type="button" class="btn btn-dark" id="replay"><span class="ms">replay</span>Rejouer la démonstration</button></div>
@@ -1118,18 +1121,19 @@ function scene(type,h){
   return `<svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true">${b}</svg>`;
 }
 const V=[
- {id:1,name:'Domaine de la Forêt',city:'Rambouillet · Yvelines',s:12,pax:200,ch:80,note:'4.8',st:4,cc:true,eco:true,esat:true,fast:true,price:238,acc:'Montparnasse → Rambouillet 35 min',scene:'domaine',h:205,inc:['Plénière et 3 sous-commissions','Pauses, déjeuner et dîner','Chambre single','Option team building solidaire (ESAT)']},
- {id:2,name:'Hôtel Les Docks',city:'Saint-Ouen · Seine-Saint-Denis',s:9,pax:180,ch:120,note:'4.6',st:4,cc:false,eco:false,esat:false,fast:true,price:196,acc:'Métro 14 · 12 min de Saint-Lazare',scene:'ville',h:210,inc:['Plénière et 2 sous-commissions','Pauses et déjeuner','Chambre single','Wifi']},
- {id:3,name:'Château des Trois Rivières',city:'Vernon · Eure',s:7,pax:140,ch:48,note:'4.8',st:4,cc:false,eco:true,esat:false,fast:false,price:312,acc:'Saint-Lazare → Vernon 45 min',scene:'domaine',h:30,inc:['Plénière et 4 sous-commissions','Pension complète','Chambre single','Soirée privatisée']},
- {id:4,name:'Abbaye du Val Fleuri',city:'Senlis · Oise',s:6,pax:90,ch:52,note:'4.7',st:3,cc:false,eco:false,esat:true,fast:true,price:268,acc:'Gare du Nord → Chantilly 25 min',scene:'restaurant',h:28,inc:['Salle plénière','Pauses par un traiteur ESAT','Déjeuner et dîner','Chambre single']},
- {id:5,name:'Campus Seine Amont',city:'Vitry-sur-Seine · Val-de-Marne',s:15,pax:300,ch:110,note:'4.5',st:3,cc:true,eco:true,esat:true,fast:false,price:179,acc:'RER C · 20 min de Paris',scene:'pleniere',h:200,inc:['Plénière et 6 sous-commissions','Pension complète','Chambre single','Team building solidaire inclus']},
- {id:6,name:'Grand Hôtel du Lac',city:'Enghien-les-Bains · Val-d\'Oise',s:10,pax:260,ch:140,note:'4.7',st:4,cc:true,eco:false,esat:false,fast:true,price:289,acc:'Gare du Nord → Enghien 15 min',scene:'pleniere',h:20,inc:['Plénière et 3 sous-commissions','Pension complète','Chambre single','Accès spa']},
- {id:7,name:'Le Clos des Crayères',city:'Reims · Marne',s:5,pax:70,ch:38,note:'4.9',st:5,cc:false,eco:true,esat:false,fast:false,price:345,acc:'Paris-Est → Reims 45 min',scene:'restaurant',h:12,inc:['Salle plénière','Pension complète, accords mets-vins','Chambre single','Visite de cave']},
- {id:8,name:'Manoir de Chevreuse',city:'Saint-Rémy · Yvelines',s:8,pax:120,ch:60,note:'4.8',st:4,cc:false,eco:true,esat:false,fast:true,price:254,acc:'RER B · 45 min de Paris',scene:'domaine',h:150,inc:['Plénière et 2 sous-commissions','Pauses, déjeuner et dîner','Chambre single','Activité nature encadrée']}
+ {id:1,ph:'1717240049346-b6a9f43f4e1c',name:'Domaine de la Forêt',city:'Rambouillet · Yvelines',s:12,pax:200,ch:80,note:'4.8',st:4,cc:true,eco:true,esat:true,fast:true,price:238,acc:'Montparnasse → Rambouillet 35 min',scene:'domaine',h:205,inc:['Plénière et 3 sous-commissions','Pauses, déjeuner et dîner','Chambre single','Option team building solidaire (ESAT)']},
+ {id:2,ph:'1593020284097-bfd623d9c475',name:'Hôtel Les Docks',city:'Saint-Ouen · Seine-Saint-Denis',s:9,pax:180,ch:120,note:'4.6',st:4,cc:false,eco:false,esat:false,fast:true,price:196,acc:'Métro 14 · 12 min de Saint-Lazare',scene:'ville',h:210,inc:['Plénière et 2 sous-commissions','Pauses et déjeuner','Chambre single','Wifi']},
+ {id:3,ph:'1629298642815-b83a5de6dcc6',name:'Château des Trois Rivières',city:'Vernon · Eure',s:7,pax:140,ch:48,note:'4.8',st:4,cc:false,eco:true,esat:false,fast:false,price:312,acc:'Saint-Lazare → Vernon 45 min',scene:'domaine',h:30,inc:['Plénière et 4 sous-commissions','Pension complète','Chambre single','Soirée privatisée']},
+ {id:4,ph:'1705591930871-68ecb786773d',name:'Abbaye du Val Fleuri',city:'Senlis · Oise',s:6,pax:90,ch:52,note:'4.7',st:3,cc:false,eco:false,esat:true,fast:true,price:268,acc:'Gare du Nord → Chantilly 25 min',scene:'restaurant',h:28,inc:['Salle plénière','Pauses par un traiteur ESAT','Déjeuner et dîner','Chambre single']},
+ {id:5,ph:'1773828755374-0ee802d9f44b',name:'Campus Seine Amont',city:'Vitry-sur-Seine · Val-de-Marne',s:15,pax:300,ch:110,note:'4.5',st:3,cc:true,eco:true,esat:true,fast:false,price:179,acc:'RER C · 20 min de Paris',scene:'pleniere',h:200,inc:['Plénière et 6 sous-commissions','Pension complète','Chambre single','Team building solidaire inclus']},
+ {id:6,ph:'1773410994745-79a368ca4de2',name:'Grand Hôtel du Lac',city:'Enghien-les-Bains · Val-d\'Oise',s:10,pax:260,ch:140,note:'4.7',st:4,cc:true,eco:false,esat:false,fast:true,price:289,acc:'Gare du Nord → Enghien 15 min',scene:'pleniere',h:20,inc:['Plénière et 3 sous-commissions','Pension complète','Chambre single','Accès spa']},
+ {id:7,ph:'1760995579965-3a1e5cb3dcd2',name:'Le Clos des Crayères',city:'Reims · Marne',s:5,pax:70,ch:38,note:'4.9',st:5,cc:false,eco:true,esat:false,fast:false,price:345,acc:'Paris-Est → Reims 45 min',scene:'restaurant',h:12,inc:['Salle plénière','Pension complète, accords mets-vins','Chambre single','Visite de cave']},
+ {id:8,ph:'1631613565820-4bc019cf5ed8',name:'Manoir de Chevreuse',city:'Saint-Rémy · Yvelines',s:8,pax:120,ch:60,note:'4.8',st:4,cc:false,eco:true,esat:false,fast:true,price:254,acc:'RER B · 45 min de Paris',scene:'domaine',h:150,inc:['Plénière et 2 sous-commissions','Pauses, déjeuner et dîner','Chambre single','Activité nature encadrée']}
 ];
 const FACT={1:.96,2:.98,3:.95,4:1,5:.97,6:.94,7:.99,8:.96};
 const TF={sem:1,jde:.34,rest:.22};
-V.forEach(v=>v.img=scene(v.scene,v.h));
+const photo=(v,w,h)=>`https://images.unsplash.com/photo-${v.ph}?w=${w}&h=${h}&fit=crop&auto=format&q=70`;
+V.forEach(v=>v.img=scene(v.scene,v.h)+`<img class="vp" src="${photo(v,640,360)}" alt="${v.name}, photo d'illustration" loading="lazy" onerror="this.remove()">`);
 const CCS=['SBS · Ventes France','SBS · Marketing','Axway · Ventes Europe du Sud','Axway · Ressources humaines'];
 const S={scr:'brief',req:{type:'sem',pax:40,days:2,start:'2027-03-16',cc:CCS[0],pm:false},f:{eco:false,cc:false,esat:false,fast:false,sort:'reco',q:''},cart:[],chosen:null,appr:[],bc:null,booked:null};
 const STEPS=[['brief','La demande'],['search','La recherche'],['compare','La comparaison'],['validate','La validation']];
@@ -1219,7 +1223,7 @@ function rCompare(){
   const ems=$$('.rfq em');
   const show=()=>{
     $('#cmp').innerHTML=`${need2?`<div class="twoq"><span class="ms">info</span><span>Au-delà de ${eur(SE.s1)} HT hors contrat, votre politique demande <b>deux devis</b>. Ajoutez un second lieu pour pouvoir choisir.</span></div>`:''}<div class="tablewrap"><table class="cmp"><thead><tr><th>Lieu</th><th>Offre / pers.${S.req.type==='rest'?'':' / jour'}</th><th>Total HT</th><th>Prestations incluses</th><th>Accès</th><th>RSE</th><th>Feu</th><th></th></tr></thead><tbody>
-    ${offers.map(o=>`<tr><td><b>${o.v.name}</b><br><span style="font-size:13px;color:#6B7782">${o.v.city}${o.v.cc?' · sous contrat':''}</span></td><td class="num"><s>${o.pub} € tarif public</s><b>${o.price} € HT</b></td><td class="num"><b>${eur(o.total)}</b></td><td><ul>${(S.req.type==='rest'?['Menu trois plats','Boissons incluses','Salon privatisé']:o.v.inc).map(x=>`<li>${x}</li>`).join('')}<li>Annulation sans frais jusqu'à J-${o.v.fast?30:45}</li></ul></td><td>${o.v.acc}</td><td style="font-size:13.5px">${[o.v.eco?'Certifié':'',o.v.esat?'Offre ESAT':''].filter(Boolean).join('<br>')||'·'}</td><td><span class="lt"><i style="background:${LC[o.l]}"></i>${LT[o.l]}</span></td><td><button class="pbtn dark pick" type="button" data-pick="${o.v.id}" ${need2?'disabled title="Deux devis requis"':''}>Choisir</button></td></tr>`).join('')}
+    ${offers.map(o=>`<tr><td><img class="cth" src="${photo(o.v,240,150)}" alt="" loading="lazy" onerror="this.remove()"><b>${o.v.name}</b><br><span style="font-size:13px;color:#6B7782">${o.v.city}${o.v.cc?' · sous contrat':''}</span></td><td class="num"><s>${o.pub} € tarif public</s><b>${o.price} € HT</b></td><td class="num"><b>${eur(o.total)}</b></td><td><ul>${(S.req.type==='rest'?['Menu trois plats','Boissons incluses','Salon privatisé']:o.v.inc).map(x=>`<li>${x}</li>`).join('')}<li>Annulation sans frais jusqu'à J-${o.v.fast?30:45}</li></ul></td><td>${o.v.acc}</td><td style="font-size:13.5px">${[o.v.eco?'Certifié':'',o.v.esat?'Offre ESAT':''].filter(Boolean).join('<br>')||'·'}</td><td><span class="lt"><i style="background:${LC[o.l]}"></i>${LT[o.l]}</span></td><td><button class="pbtn dark pick" type="button" data-pick="${o.v.id}" ${need2?'disabled title="Deux devis requis"':''}>Choisir</button></td></tr>`).join('')}
     </tbody></table></div><p style="font:13.5px/1.45 var(--f);color:#6B7782;margin-top:12px">Chaque offre chiffre les mêmes postes. La mise en concurrence reste tracée dans le dossier.</p>
     <div class="actions"><button class="pbtn" type="button" id="bBack2">Retour à la recherche</button></div>`;
     $$('[data-pick]').forEach(b=>b.onclick=()=>{ S.chosen=offerOf(V.find(v=>v.id===+b.dataset.pick)); S.appr=[]; S.bc=null; S.booked=null; rSugg(); go('validate'); });
